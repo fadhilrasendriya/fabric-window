@@ -1,0 +1,37 @@
+# simulator
+--> Read Goods: read previously created 10 goods
+
+*** Reading good good-000000
+
+*** Retrieved good: {"id":"good-000000","name":"Good number 0","unit":"kg","importLimit":"100.00","exportLimit":"200.0"}
+time to read: 0.036253 seconds
+
+*** Reading good good-000001
+
+*** Retrieved good: {"id":"good-000001","name":"Good number 1","unit":"kg","importLimit":"100.00","exportLimit":"200.0"}
+time to read: 0.006244 seconds
+
+*** Reading good good-000002
+
+*** Retrieved good: {"id":"good-000002","name":"Good number 2","unit":"kg","importLimit":"100.00","exportLimit":"200.0"}
+time to read: 0.005774 seconds
+
+# chaincode (peer0.singlewindow.example.com only)
+2023/05/26 07:43:25 INFO: reading good id: good-000000 from world state...
+2023/05/26 07:43:25 GetGoodById -> INFO: unmarshalling data from json...
+2023/05/26 07:43:25 GetGoodById -> INFO: data successfully unmarshalled
+2023/05/26 07:43:25 INFO: reading good id: good-000001 from world state...
+2023/05/26 07:43:25 GetGoodById -> INFO: unmarshalling data from json...
+2023/05/26 07:43:25 GetGoodById -> INFO: data successfully unmarshalled
+
+# orderer.example.com
+no logs
+
+# peer0.singlewindow.example.com
+2023-05-26 07:43:25.591 UTC 231c INFO [endorser] callChaincode -> finished chaincode: do_chaincode duration: 12ms channel=singlewindow txID=3d342d43
+2023-05-26 07:43:25.594 UTC 231d INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2023-05-26T07:43:30.572Z grpc.peer_address=192.168.192.1:58030 grpc.code=OK grpc.call_duration=20.022291ms
+2023-05-26 07:43:25.600 UTC 231e INFO [endorser] callChaincode -> finished chaincode: do_chaincode duration: 1ms channel=singlewindow txID=b592fa2f
+2023-05-26 07:43:25.600 UTC 231f INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2023-05-26T07:43:30.597Z grpc.peer_address=192.168.192.1:58030 grpc.code=OK grpc.call_duration=2.969333ms
+
+# peer0.tradingcompany1.example.com
+no logs

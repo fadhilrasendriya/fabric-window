@@ -1,0 +1,80 @@
+# simulator
+--> Init Goods: Initiate 10 goods
+*** Submitting Transaction: CreateGood with params: goodId: good-000000, goodName: Good number 0, unit: kg, importLimit: 100.00, exportLimit 200.0
+good-000000 created in 2.225699 seconds
+*** Submitting Transaction: CreateGood with params: goodId: good-000001, goodName: Good number 1, unit: kg, importLimit: 100.00, exportLimit 200.0
+good-000001 created in 2.067818 seconds
+*** Submitting Transaction: CreateGood with params: goodId: good-000002, goodName: Good number 2, unit: kg, importLimit: 100.00, exportLimit 200.0
+good-000002 created in 2.047718 seconds
+*** Submitting Transaction: CreateGood with params: goodId: good-000003, goodName: Good number 3, unit: kg, importLimit: 100.00, exportLimit 200.0
+good-000003 created in 2.046007 seconds
+...
+
+# chaincode (all peers)
+2023/05/26 07:42:59 CreateGood -> INFO: creating good id: good-000000, name Good number 0, unit: kg, importLimit: 100.00, exportLimit: 200.0 ...
+2023/05/26 07:42:59 CreateGood -> INFO: authenticating client...
+2023/05/26 07:42:59 CreateGood -> INFO: client authorized
+2023/05/26 07:42:59 CreateGood -> INFO: checking for existing good
+2023/05/26 07:42:59 GoodExists -> INFO: checking good id: good-000000 existence...
+2023/05/26 07:42:59 GoodExists -> INFO: good id: good-000000 does not exist
+2023/05/26 07:42:59 CreateGood -> INFO: converting into json...
+2023/05/26 07:42:59 CreateGood -> INFO: adding good to the ledger
+2023/05/26 07:42:59 CreateGood -> INFO: successfully added good to the ledger
+2023/05/26 07:43:01 CreateGood -> INFO: creating good id: good-000001, name Good number 1, unit: kg, importLimit: 100.00, exportLimit: 200.0 ...
+2023/05/26 07:43:01 CreateGood -> INFO: authenticating client...
+2023/05/26 07:43:01 CreateGood -> INFO: client authorized
+2023/05/26 07:43:01 CreateGood -> INFO: checking for existing good
+2023/05/26 07:43:01 GoodExists -> INFO: checking good id: good-000001 existence...
+2023/05/26 07:43:01 GoodExists -> INFO: good id: good-000001 does not exist
+2023/05/26 07:43:01 CreateGood -> INFO: converting into json...
+2023/05/26 07:43:01 CreateGood -> INFO: adding good to the ledger
+2023/05/26 07:43:01 CreateGood -> INFO: successfully added good to the ledger
+...
+
+# orderer.example.com
+2023-05-26 07:42:59.847 UTC 03dd WARN [orderer.common.broadcast] Handle -> Error reading from 192.168.192.2:39844: rpc error: code = Canceled desc = context canceled
+2023-05-26 07:42:59.848 UTC 03de INFO [comm.grpc.server] 1 -> streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.request_deadline=2023-05-26T07:43:04.832Z grpc.peer_address=192.168.192.2:39844 grpc.peer_subject="CN=peer0.singlewindow.example.com,L=San Francisco,ST=California,C=US" error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=11.329833ms
+2023-05-26 07:43:01.856 UTC 03df INFO [orderer.consensus.etcdraft] propose -> Created block [711], there are 0 blocks in flight channel=singlewindow node=1
+2023-05-26 07:43:01.883 UTC 03e0 INFO [orderer.consensus.etcdraft] writeBlock -> Writing block [711] (Raft index: 714) to ledger channel=singlewindow node=1
+2023-05-26 07:43:01.990 UTC 03e1 WARN [orderer.common.broadcast] Handle -> Error reading from 192.168.192.2:39844: rpc error: code = Canceled desc = context canceled
+2023-05-26 07:43:01.991 UTC 03e2 INFO [comm.grpc.server] 1 -> streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.request_deadline=2023-05-26T07:43:06.984Z grpc.peer_address=192.168.192.2:39844 grpc.peer_subject="CN=peer0.singlewindow.example.com,L=San Francisco,ST=California,C=US" error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=4.173125ms
+2023-05-26 07:43:03.992 UTC 03e3 INFO [orderer.consensus.etcdraft] propose -> Created block [712], there are 0 blocks in flight channel=singlewindow node=1
+2023-05-26 07:43:03.997 UTC 03e4 INFO [orderer.consensus.etcdraft] writeBlock -> Writing block [712] (Raft index: 715) to ledger channel=singlewindow node=1
+
+# peer0.singlewindow.example.com
+2023-05-26 07:42:59.782 UTC 22cc INFO [endorser] callChaincode -> finished chaincode: do_chaincode duration: 22ms channel=singlewindow txID=9e38de76
+2023-05-26 07:42:59.825 UTC 22cd INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2023-05-26T07:43:14.727Z grpc.peer_address=192.168.192.1:58030 grpc.code=OK grpc.call_duration=76.296125ms
+2023-05-26 07:42:59.831 UTC 22ce INFO [gateway] Submit -> Sending transaction to orderer txID=9e38de760b93932b63694f9854b780b224849a7669b3fe7b05301c2b68a7028b endpoint=orderer.example.com:7050
+2023-05-26 07:42:59.846 UTC 22cf INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2023-05-26T07:43:04.83Z grpc.peer_address=192.168.192.1:58030 grpc.code=OK grpc.call_duration=15.650416ms
+2023-05-26 07:43:01.910 UTC 22d0 INFO [gossip.privdata] StoreBlock -> Received block [711] from buffer channel=singlewindow
+2023-05-26 07:43:01.921 UTC 22d1 INFO [committer.txvalidator] Validate -> [singlewindow] Validated block [711] in 10ms
+2023-05-26 07:43:01.949 UTC 22d2 INFO [kvledger] commit -> [singlewindow] Committed block [711] with 1 transaction(s) in 26ms (state_validation=2ms block_and_pvtdata_commit=15ms state_commit=3ms) commitHash=[3275bf4ed1831aecfc6fa6d73bdd1c2765e69347298d86a99393a9ec110b783c]
+2023-05-26 07:43:01.950 UTC 22d3 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2023-05-26T07:43:59.848Z grpc.peer_address=192.168.192.1:58030 grpc.code=OK grpc.call_duration=2.101624792s
+2023-05-26 07:43:01.959 UTC 22d4 INFO [endorser] callChaincode -> finished chaincode: do_chaincode duration: 4ms channel=singlewindow txID=657c6067
+2023-05-26 07:43:01.974 UTC 22d5 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2023-05-26T07:43:16.952Z grpc.peer_address=192.168.192.1:58030 grpc.code=OK grpc.call_duration=22.408459ms
+2023-05-26 07:43:01.985 UTC 22d6 INFO [gateway] Submit -> Sending transaction to orderer txID=657c606710fc2864c3701bc1b23b0930db66d845ac8e10f76f1d9bf2cb9f0ade endpoint=orderer.example.com:7050
+2023-05-26 07:43:01.990 UTC 22d7 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2023-05-26T07:43:06.983Z grpc.peer_address=192.168.192.1:58030 grpc.code=OK grpc.call_duration=5.519041ms
+2023-05-26 07:43:04.004 UTC 22d8 INFO [gossip.privdata] StoreBlock -> Received block [712] from buffer channel=singlewindow
+2023-05-26 07:43:04.007 UTC 22d9 INFO [committer.txvalidator] Validate -> [singlewindow] Validated block [712] in 2ms
+2023-05-26 07:43:04.018 UTC 22da INFO [kvledger] commit -> [singlewindow] Committed block [712] with 1 transaction(s) in 10ms (state_validation=0ms block_and_pvtdata_commit=6ms state_commit=1ms) commitHash=[a7909625e3b70876935f45e263909e146fbdbf418035697c4b90db4ec1554a2b]
+2023-05-26 07:43:04.018 UTC 22db INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2023-05-26T07:44:01.992Z grpc.peer_address=192.168.192.1:58030 grpc.code=OK grpc.call_duration=2.026117251s
+
+# peer0.tradingcompany1.example.com
+2023-05-26 07:42:59.821 UTC adcc INFO [endorser] callChaincode -> finished chaincode: do_chaincode duration: 25ms channel=singlewindow txID=9e38de76
+2023-05-26 07:42:59.822 UTC adcd INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.request_deadline=2023-05-26T07:43:14.728Z grpc.peer_address=192.168.192.2:56798 grpc.peer_subject="CN=peer0.singlewindow.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=31.854709ms
+2023-05-26 07:43:01.911 UTC adce INFO [gossip.privdata] StoreBlock -> Received block [711] from buffer channel=singlewindow
+2023-05-26 07:43:01.919 UTC adcf INFO [committer.txvalidator] Validate -> [singlewindow] Validated block [711] in 7ms
+2023-05-26 07:43:01.948 UTC add0 INFO [kvledger] commit -> [singlewindow] Committed block [711] with 1 transaction(s) in 27ms (state_validation=2ms block_and_pvtdata_commit=17ms state_commit=2ms) commitHash=[3275bf4ed1831aecfc6fa6d73bdd1c2765e69347298d86a99393a9ec110b783c]
+2023-05-26 07:43:01.971 UTC add1 INFO [endorser] callChaincode -> finished chaincode: do_chaincode duration: 9ms channel=singlewindow txID=657c6067
+2023-05-26 07:43:01.973 UTC add2 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.request_deadline=2023-05-26T07:43:16.952Z grpc.peer_address=192.168.192.2:56798 grpc.peer_subject="CN=peer0.singlewindow.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=12.600167ms
+2023-05-26 07:43:04.004 UTC add3 INFO [gossip.privdata] StoreBlock -> Received block [712] from buffer channel=singlewindow
+2023-05-26 07:43:04.007 UTC add4 INFO [committer.txvalidator] Validate -> [singlewindow] Validated block [712] in 2ms
+2023-05-26 07:43:04.018 UTC add5 INFO [kvledger] commit -> [singlewindow] Committed block [712] with 1 transaction(s) in 10ms (state_validation=0ms block_and_pvtdata_commit=6ms state_commit=1ms) commitHash=[a7909625e3b70876935f45e263909e146fbdbf418035697c4b90db4ec1554a2b]
+
+# block 711 commit hash
+peer0.singlewindow.example.com    : 3275bf4ed1831aecfc6fa6d73bdd1c2765e69347298d86a99393a9ec110b783c
+peer0.tradingcompany1.example.com : 3275bf4ed1831aecfc6fa6d73bdd1c2765e69347298d86a99393a9ec110b783c
+
+# block 712 commit hash
+peer0.singlewindow.example.com    : a7909625e3b70876935f45e263909e146fbdbf418035697c4b90db4ec1554a2b
+peer0.tradingcompany1.example.com : a7909625e3b70876935f45e263909e146fbdbf418035697c4b90db4ec1554a2b

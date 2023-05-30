@@ -1,0 +1,20 @@
+fadhil@ip-192-168-1-3 test-network % osnadmin channel join --channelID singlewindow --config-block channel-artifacts/singlewindow_genesis.block -o localhost:7053 --ca-file $OSN_TLS_CA_ROOT_CERT --client-cert $ADMIN_TLS_SIGN_CERT --client-key $ADMIN_TLS_PRIVATE_KEY
+Status: 201
+{
+        "name": "singlewindow",
+        "url": "/participation/v1/channels/singlewindow",
+        "consensusRelation": "consenter",
+        "status": "active",
+        "height": 1
+}
+
+fadhil@ip-192-168-1-3 test-network % osnadmin channel list --channelID singlewindow -o localhost:7053 --ca-file $OSN_TLS_CA_ROOT_CERT --client-cert $ADMIN_TLS_SIGN_CERT --client-key $ADMIN_TLS_PRIVATE_KEY
+Status: 200
+{
+        "name": "singlewindow",
+        "url": "/participation/v1/channels/singlewindow",
+        "consensusRelation": "consenter",
+        "status": "active",
+        "height": 1
+}
+

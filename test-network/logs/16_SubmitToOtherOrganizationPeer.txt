@@ -1,0 +1,10 @@
+# simulator
+rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: tls: failed to verify certificate: x509: certificate signed by unknown authority"
+*** Transaction failed
+rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: tls: failed to verify certificate: x509: certificate signed by unknown authority"
+
+# chaincode
+no logs
+
+# peer
+2023-05-30 06:13:59.687 UTC 6d300 ERRO [core.comm] ServerHandshake -> Server TLS handshake failed in 3.707334ms with error remote error: tls: bad certificate server=PeerServer remoteaddress=192.168.192.1:60014

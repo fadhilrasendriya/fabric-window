@@ -1,0 +1,21 @@
+# simulator
+--> Submit Transaction: CreateGood: creating good from unauthorized organization: tradingcompany1.example.com
+
+rpc error: code = Aborted desc = failed to endorse transaction, see attached details for more info
+*** Transaction failed
+
+# chaincode
+2023/05/26 13:05:15 CreateGood -> INFO: creating good id: good-100123, name Good number 100123, unit: kg, importLimit: 100.00, exportLimit: 200.0 ...
+2023/05/26 13:05:15 CreateGood -> INFO: authenticating client...
+2023/05/26 13:05:15 CreateGood -> ERROR: client unauthorized: unauthorized organization
+
+# orderer.example.com
+no logs
+
+# peer0.tradingcompany.example.com
+2023-05-26 13:05:15.138 UTC ae83 INFO [endorser] callChaincode -> finished chaincode: do_chaincode duration: 3ms channel=singlewindow txID=718fcaaf
+2023-05-26 13:05:15.142 UTC ae84 WARN [gateway] func1 -> Endorse call to endorser failed channel=singlewindow chaincode=do_chaincode txID=718fcaafaee45e23cee04ae838698f23fdf8f209d7c4ff65d614b863b36cf9ac endorserAddress=peer0.tradingcompany1.example.com:9051 endorserMspid=TradingCompany1MSP error="chaincode response 500, client unauthorized: unauthorized organization"
+2023-05-26 13:05:15.142 UTC ae85 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2023-05-26T13:05:30.132Z grpc.peer_address=192.168.192.1:43058 error="rpc error: code = Aborted desc = failed to endorse transaction, see attached details for more info" grpc.code=Aborted grpc.call_duration=10.170416ms
+
+# peer0.singlewindow.example.com
+no logs

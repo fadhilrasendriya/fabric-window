@@ -1,0 +1,243 @@
+# run #1
+--> Submit Transaction: submitting 9 concurrent requests
+*** 9 concurrent request(s) finished in 2.140804 seconds
+
+--> Submit Transaction: submitting 10 concurrent requests
+*** 10 concurrent request(s) finished in 0.087784 seconds
+
+--> Submit Transaction: submitting 100 concurrent requests
+*** 100 concurrent request(s) finished in 0.533527 seconds
+
+--> Submit Transaction: submitting 1000 concurrent requests
+*** 1000 concurrent request(s) finished in 4.408874 seconds
+
+--> Submit Transaction: submitting 2000 concurrent requests
+*** 2000 concurrent request(s) finished in 8.967581 seconds
+
+--> Submit Transaction: submitting 3000 concurrent requests
+*** 3000 concurrent request(s) finished in 14.217546 seconds
+
+--> Submit Transaction: submitting 4000 concurrent requests
+*** 4000 concurrent request(s) finished in 19.681515 seconds
+
+--> Submit Transaction: submitting 5000 concurrent requests
+*** There are 2823 failed request(s) on 5000 concurrent request(s)
+*** 5000 concurrent request(s) finished in 18.590004 seconds
+
+--> Submit Transaction: submitting 6000 concurrent requests
+*** There are 3610 failed request(s) on 6000 concurrent request(s)
+*** 6000 concurrent request(s) finished in 21.763654 seconds
+
+--> Submit Transaction: submitting 7000 concurrent requests
+*** There are 5627 failed request(s) on 7000 concurrent request(s)
+*** 7000 concurrent request(s) finished in 19.615747 seconds
+
+--> Submit Transaction: submitting 8000 concurrent requests
+*** There are 6392 failed request(s) on 8000 concurrent request(s)
+*** 8000 concurrent request(s) finished in 20.926429 seconds
+
+--> Submit Transaction: submitting 9000 concurrent requests
+*** There are 8080 failed request(s) on 9000 concurrent request(s)
+*** 9000 concurrent request(s) finished in 23.695729 seconds
+rpc error: code = Aborted desc = failed to collect enough transaction endorsements, see attached details for more info
+
+--> Submit Transaction: submitting 10000 concurrent requests
+*** There are 9200 failed request(s) on 10000 concurrent request(s)
+*** 10000 concurrent request(s) finished in 23.147120 seconds
+
+Process finished with the exit code 0
+
+# run #2
+--> Submit Transaction: submitting 9 concurrent requests
+*** 9 concurrent request(s) finished in 2.201770 seconds
+
+--> Submit Transaction: submitting 10 concurrent requests
+*** 10 concurrent request(s) finished in 0.150597 seconds
+
+--> Submit Transaction: submitting 100 concurrent requests
+*** 100 concurrent request(s) finished in 1.266498 seconds
+
+--> Submit Transaction: submitting 1000 concurrent requests
+*** 1000 concurrent request(s) finished in 8.472549 seconds
+
+--> Submit Transaction: submitting 2000 concurrent requests
+*** 2000 concurrent request(s) finished in 13.917710 seconds
+
+--> Submit Transaction: submitting 3000 concurrent requests
+*** 3000 concurrent request(s) finished in 19.336823 seconds
+
+--> Submit Transaction: submitting 4000 concurrent requests
+*** There are 1281 failed request(s) on 4000 concurrent request(s)
+*** 4000 concurrent request(s) finished in 20.555418 seconds
+
+--> Submit Transaction: submitting 5000 concurrent requests
+*** There are 2626 failed request(s) on 5000 concurrent request(s)
+*** 5000 concurrent request(s) finished in 22.889725 seconds
+
+--> Submit Transaction: submitting 6000 concurrent requests
+*** There are 4502 failed request(s) on 6000 concurrent request(s)
+*** 6000 concurrent request(s) finished in 21.663616 seconds
+
+--> Submit Transaction: submitting 7000 concurrent requests
+*** There are 6014 failed request(s) on 7000 concurrent request(s)
+*** 7000 concurrent request(s) finished in 24.078028 seconds
+
+--> Submit Transaction: submitting 8000 concurrent requests
+*** There are 7384 failed request(s) on 8000 concurrent request(s)
+*** 8000 concurrent request(s) finished in 21.772478 seconds
+
+--> Submit Transaction: submitting 9000 concurrent requests
+*** There are 7942 failed request(s) on 9000 concurrent request(s)
+*** 9000 concurrent request(s) finished in 22.518033 seconds
+
+--> Submit Transaction: submitting 10000 concurrent requests
+*** There are 8928 failed request(s) on 10000 concurrent request(s)
+*** 10000 concurrent request(s) finished in 24.611777 seconds
+
+Process finished with the exit code 0
+
+# run #3
+*** 9 concurrent request(s) finished in 2.134560 seconds
+--> Submit Transaction: submitting 10 concurrent requests
+*** 10 concurrent request(s) finished in 0.181706 seconds
+
+--> Submit Transaction: submitting 100 concurrent requests
+*** 100 concurrent request(s) finished in 0.932527 seconds
+
+--> Submit Transaction: submitting 1000 concurrent requests
+*** 1000 concurrent request(s) finished in 9.737348 seconds
+
+--> Submit Transaction: submitting 2000 concurrent requests
+*** 2000 concurrent request(s) finished in 16.139087 seconds
+
+--> Submit Transaction: submitting 3000 concurrent requests
+*** There are 8 failed request(s) on 3000 concurrent request(s)
+*** 3000 concurrent request(s) finished in 23.854367 seconds
+
+--> Submit Transaction: submitting 4000 concurrent requests
+*** There are 2209 failed request(s) on 4000 concurrent request(s)
+*** 4000 concurrent request(s) finished in 22.586088 seconds
+
+--> Submit Transaction: submitting 5000 concurrent requests
+*** There are 3704 failed request(s) on 5000 concurrent request(s)
+*** 5000 concurrent request(s) finished in 20.312278 seconds
+
+--> Submit Transaction: submitting 6000 concurrent requests
+*** There are 5177 failed request(s) on 6000 concurrent request(s)
+*** 6000 concurrent request(s) finished in 21.590184 seconds
+
+--> Submit Transaction: submitting 7000 concurrent requests
+*** There are 5689 failed request(s) on 7000 concurrent request(s)
+*** 7000 concurrent request(s) finished in 22.146674 seconds
+
+--> Submit Transaction: submitting 8000 concurrent requests
+*** There are 6896 failed request(s) on 8000 concurrent request(s)
+*** 8000 concurrent request(s) finished in 22.944030 seconds
+
+--> Submit Transaction: submitting 9000 concurrent requests
+*** There are 8094 failed request(s) on 9000 concurrent request(s)
+*** 9000 concurrent request(s) finished in 24.217272 seconds
+
+--> Submit Transaction: submitting 10000 concurrent requests
+*** There are 9304 failed request(s) on 10000 concurrent request(s)
+*** 10000 concurrent request(s) finished in 29.218153 seconds
+
+Process finished with the exit code 0
+
+# run #4
+--> Submit Transaction: submitting 9 concurrent requests
+*** 9 concurrent request(s) finished in 2.227811 seconds
+
+--> Submit Transaction: submitting 10 concurrent requests
+*** 10 concurrent request(s) finished in 0.147795 seconds
+
+--> Submit Transaction: submitting 100 concurrent requests
+*** 100 concurrent request(s) finished in 1.161566 seconds
+
+--> Submit Transaction: submitting 1000 concurrent requests
+*** 1000 concurrent request(s) finished in 9.332411 seconds
+
+--> Submit Transaction: submitting 2000 concurrent requests
+*** 2000 concurrent request(s) finished in 16.719465 seconds
+
+--> Submit Transaction: submitting 3000 concurrent requests
+*** 3000 concurrent request(s) finished in 21.111178 seconds
+
+--> Submit Transaction: submitting 4000 concurrent requests
+*** There are 1379 failed request(s) on 4000 concurrent request(s)
+*** 4000 concurrent request(s) finished in 21.847167 seconds
+
+--> Submit Transaction: submitting 5000 concurrent requests
+*** There are 3227 failed request(s) on 5000 concurrent request(s)
+*** 5000 concurrent request(s) finished in 22.387222 seconds
+
+--> Submit Transaction: submitting 6000 concurrent requests
+*** There are 4135 failed request(s) on 6000 concurrent request(s)
+*** 6000 concurrent request(s) finished in 22.193086 seconds
+
+--> Submit Transaction: submitting 7000 concurrent requests
+*** There are 5920 failed request(s) on 7000 concurrent request(s)
+*** 7000 concurrent request(s) finished in 23.838649 seconds
+
+--> Submit Transaction: submitting 8000 concurrent requests
+*** There are 7054 failed request(s) on 8000 concurrent request(s)
+*** 8000 concurrent request(s) finished in 20.969463 seconds
+
+--> Submit Transaction: submitting 9000 concurrent requests
+*** There are 7516 failed request(s) on 9000 concurrent request(s)
+*** 9000 concurrent request(s) finished in 25.544083 seconds
+
+--> Submit Transaction: submitting 10000 concurrent requests
+*** There are 9123 failed request(s) on 10000 concurrent request(s)
+*** 10000 concurrent request(s) finished in 23.912474 seconds
+
+Process finished with the exit code 0
+
+# run #5
+--> Submit Transaction: submitting 9 concurrent requests
+*** 9 concurrent request(s) finished in 2.172009 seconds
+
+--> Submit Transaction: submitting 10 concurrent requests
+*** 10 concurrent request(s) finished in 0.129964 seconds
+
+--> Submit Transaction: submitting 100 concurrent requests
+*** 100 concurrent request(s) finished in 1.371932 seconds
+
+--> Submit Transaction: submitting 1000 concurrent requests
+*** 1000 concurrent request(s) finished in 9.915520 seconds
+
+--> Submit Transaction: submitting 2000 concurrent requests
+*** 2000 concurrent request(s) finished in 16.860426 seconds
+
+--> Submit Transaction: submitting 3000 concurrent requests
+*** 3000 concurrent request(s) finished in 23.113045 seconds
+
+--> Submit Transaction: submitting 4000 concurrent requests
+*** There are 2530 failed request(s) on 4000 concurrent request(s)
+*** 4000 concurrent request(s) finished in 20.807431 seconds
+
+--> Submit Transaction: submitting 5000 concurrent requests
+*** There are 3058 failed request(s) on 5000 concurrent request(s)
+*** 5000 concurrent request(s) finished in 21.878332 seconds
+
+--> Submit Transaction: submitting 6000 concurrent requests
+*** There are 4553 failed request(s) on 6000 concurrent request(s)
+*** 6000 concurrent request(s) finished in 22.307973 seconds
+
+--> Submit Transaction: submitting 7000 concurrent requests
+*** There are 5658 failed request(s) on 7000 concurrent request(s)
+*** 7000 concurrent request(s) finished in 22.842531 seconds
+
+--> Submit Transaction: submitting 8000 concurrent requests
+*** There are 7834 failed request(s) on 8000 concurrent request(s)
+*** 8000 concurrent request(s) finished in 25.403195 seconds
+
+--> Submit Transaction: submitting 9000 concurrent requests
+*** There are 8142 failed request(s) on 9000 concurrent request(s)
+*** 9000 concurrent request(s) finished in 25.791030 seconds
+
+--> Submit Transaction: submitting 10000 concurrent requests
+*** There are 9241 failed request(s) on 10000 concurrent request(s)
+*** 10000 concurrent request(s) finished in 25.666744 seconds
+
+Process finished with the exit code 0

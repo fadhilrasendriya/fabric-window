@@ -1,0 +1,18 @@
+# simulator
+--> Evaluate Transaction: ReadOrder: retrieving previously created order
+{"id":"order-000000","name":"First Order","orderType":"import","country":"US","description":"An order description","owner":"x509::CN=User1@tradingcompany1.example.com,OU=client,L=San Francisco,ST=California,C=US::CN=ca.tradingcompany1.example.com,O=tradingcompany1.example.com,L=San Francisco,ST=California,C=US","goods":[{"goodId":"good-000000","quantity":"5","unit":"kg"},{"goodId":"good-000001","quantity":"6","unit":"kg"},{"goodId":"good-000002","quantity":"2","unit":"kg"},{"goodId":"good-000003","quantity":"8.5","unit":"kg"},{"goodId":"good-000004","quantity":"3.25","unit":"kg"}]}
+
+# chaincode
+2023/05/26 13:05:05 ReadOrder -> INFO: reading order id: order-000000
+2023/05/26 13:05:05 ReadOrder -> INFO: unmarshalling data
+2023/05/26 13:05:05 ReadOrder -> INFO: order {"id":"order-000000","name":"First Order","orderType":"import","country":"US","description":"An order description","owner":"x509::CN=User1@tradingcompany1.example.com,OU=client,L=San Francisco,ST=California,C=US::CN=ca.tradingcompany1.example.com,O=tradingcompany1.example.com,L=San Francisco,ST=California,C=US","goods":[{"goodId":"good-000000","quantity":"5","unit":"kg"},{"goodId":"good-000001","quantity":"6","unit":"kg"},{"goodId":"good-000002","quantity":"2","unit":"kg"},{"goodId":"good-000003","quantity":"8.5","unit":"kg"},{"goodId":"good-000004","quantity":"3.25","unit":"kg"}]} received
+
+# orderer.example.com
+no logs
+
+# peer0.tradingcompany1.example.com
+2023-05-26 13:05:05.114 UTC ae7e INFO [endorser] callChaincode -> finished chaincode: do_chaincode duration: 6ms channel=singlewindow txID=8ac01345
+2023-05-26 13:05:05.115 UTC ae7f INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2023-05-26T13:05:10.104Z grpc.peer_address=192.168.192.1:43058 grpc.code=OK grpc.call_duration=9.548709ms
+
+# peer0.singlewindow.example.com
+no logs

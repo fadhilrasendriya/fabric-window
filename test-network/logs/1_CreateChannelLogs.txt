@@ -1,0 +1,8 @@
+fadhil@ip-192-168-1-3 test-network % configtxgen -profile TwoOrgsApplicationGenesis -outputBlock ./channel-artifacts/singlewindow_genesis.block -channelID singlewindow
+2023-05-12 11:15:50.077 WIB 0001 INFO [common.tools.configtxgen] main -> Loading configuration
+2023-05-12 11:15:50.083 WIB 0002 INFO [common.tools.configtxgen.localconfig] completeInitialization -> orderer type: etcdraft
+2023-05-12 11:15:50.083 WIB 0003 INFO [common.tools.configtxgen.localconfig] completeInitialization -> Orderer.EtcdRaft.Options unset, setting to tick_interval:"500ms" election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216
+2023-05-12 11:15:50.083 WIB 0004 INFO [common.tools.configtxgen.localconfig] Load -> Loaded configuration: /Users/fadhil/hyperledger/fabric-window/test-network/configtx/configtx.yaml
+2023-05-12 11:15:50.088 WIB 0005 INFO [common.tools.configtxgen] doOutputBlock -> Generating genesis block
+2023-05-12 11:15:50.088 WIB 0006 INFO [common.tools.configtxgen] doOutputBlock -> Creating application channel genesis block
+2023-05-12 11:15:50.089 WIB 0007 INFO [common.tools.configtxgen] doOutputBlock -> Writing genesis block

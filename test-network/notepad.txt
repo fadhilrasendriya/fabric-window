@@ -1,0 +1,50 @@
+configtxgen -profile TwoOrgsApplicationGenesis -outputBlock ./channel-artifacts/singlewindow_genesis.block -channelID singlewindow
+
+export OSN_TLS_CA_ROOT_CERT=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt
+export ADMIN_TLS_SIGN_CERT=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+export ADMIN_TLS_PRIVATE_KEY=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key
+
+
+osnadmin channel join --channelID singlewindow --config-block channel-artifacts/singlewindow_genesis.block -o localhost:7053 --ca-file $OSN_TLS_CA_ROOT_CERT --client-cert $ADMIN_TLS_SIGN_CERT --client-key $ADMIN_TLS_PRIVATE_KEY
+
+osnadmin channel list --channelID singlewindow -o localhost:7053 --ca-file $OSN_TLS_CA_ROOT_CERT --client-cert $ADMIN_TLS_SIGN_CERT --client-key $ADMIN_TLS_PRIVATE_KEY
+
+
+export CORE_PEER_TLS_ENABLED=true
+export ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
+export PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/singlewindow.example.com/tlsca/tlsca.singlewindow.example.com-cert.pem
+export PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/tradingcompany1.example.com/tlsca/tlsca.tradingcompany1.example.com-cert.pem
+export ORDERER_ADMIN_TLS_SIGN_CERT=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+export ORDERER_ADMIN_TLS_PRIVATE_KEY=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key
+
+# Org SingleWindow
+export CORE_PEER_LOCALMSPID="SingleWindowMSP"
+export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG1_CA
+export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/singlewindow.example.com/users/Admin@singlewindow.example.com/msp
+export CORE_PEER_ADDRESS=localhost:7051
+
+# Org TradingCompany1
+export CORE_PEER_LOCALMSPID="TradingCompany1MSP"
+export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG2_CA
+export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/tradingcompany1.example.com/users/Admin@tradingcompany1.example.com/msp
+export CORE_PEER_ADDRESS=localhost:9051
+
+peer channel join -b channel-artifacts/singlewindow_genesis.block
+
+peer channel fetch config config_block.pb -o localhost:7050 -c $CHANNEL --tls --cafile "$ORDERER_CA"
+
+jq '.channel_group.groups.Application.groups["SingleWindowMSP"].values += {"AnchorPeers":{"mod_policy": "Admins","value":{"anchor_peers": [{"host": "peer0.singlewindow.example.com","port": 7051}]},"version": "0"}}' config_copy.json > modified_config.json
+echo '{"payload":{"header":{"channel_header":{"channel_id":"singlewindow", "type":2}},"data":{"config_update":'$(cat config_update.json)'}}}' | jq . > config_update_in_envelope.json
+configtxlator proto_encode --input config_update_in_envelope.json --type common.Envelope --output config_update_in_envelope.pb
+
+peer channel update -f config_update_in_envelope.pb -c singlewindow -o localhost:7050 --cafile $ORDERER_CA --tls
+
+peer lifecycle chaincode package channel-artifacts/do_chaincode.tar.gz --path ../chaincode/delivery_order --lang golang --label do_1.4
+
+peer lifecycle chaincode install channel-artifacts/do_chaincode.tar.gz
+
+peer lifecycle chaincode approveformyorg -o localhost:7050 --tls --cafile $ORDERER_CA --channelID singlewindow --name do_chaincode --version 1.4 --package-id do_1.4:7b50b552b89b7928e79e44f9464468e8b17d2b12a5e8fd7716f6d159ee4cd4da --sequence 7 NA NA
+
+peer lifecycle chaincode checkcommitreadiness --channelID singlewindow --name do_chaincode --version 1.4 --sequence 7 NA NA --output json
+
+peer lifecycle chaincode commit -o localhost:7050 --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA --tls --cafile "$ORDERER_CA" --channelID singlewindow --name do_chaincode --version 1.4 --sequence 7 NA NA

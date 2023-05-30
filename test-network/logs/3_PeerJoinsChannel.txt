@@ -1,0 +1,44 @@
+# Attempts singlewindow orgs to join channel
+fadhil@ip-192-168-1-3 test-network % peer channel join -b channel-artifacts/singlewindow_genesis.block
+2023-05-12 16:52:02.072 WIB 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2023-05-12 16:52:02.123 WIB 0002 INFO [channelCmd] executeJoin -> Successfully submitted proposal to join channel
+
+# Logs on peer0.singlewindow.example.com
+2023-05-12 09:52:02.085 UTC 001e INFO [ledgermgmt] CreateLedger -> Creating ledger [singlewindow] with genesis block
+2023-05-12 09:52:02.089 UTC 001f INFO [blkstorage] newBlockfileMgr -> Getting block information from block storage
+2023-05-12 09:52:02.109 UTC 0020 INFO [kvledger] commit -> [singlewindow] Committed block [0] with 1 transaction(s) in 13ms (state_validation=0ms block_and_pvtdata_commit=3ms state_commit=5ms) commitHash=[]
+2023-05-12 09:52:02.110 UTC 0021 INFO [kvledger] updateLedgerStatus -> Updating ledger [singlewindow] status to [ACTIVE]
+2023-05-12 09:52:02.111 UTC 0022 INFO [ledgermgmt] CreateLedger -> Created ledger [singlewindow] with genesis block
+2023-05-12 09:52:02.117 UTC 0023 WARN [peer.orderers] Update -> Config defines both orderer org specific endpoints and global endpoints, global endpoints will be ignored channel=singlewindow
+2023-05-12 09:52:02.119 UTC 0024 INFO [gossip.gossip] JoinChan -> Joining gossip network of channel singlewindow with 2 organizations
+2023-05-12 09:52:02.119 UTC 0025 INFO [gossip.gossip] learnAnchorPeers -> No configured anchor peers of TradingCompany1MSP for channel singlewindow to learn about
+2023-05-12 09:52:02.119 UTC 0026 INFO [gossip.gossip] learnAnchorPeers -> No configured anchor peers of SingleWindowMSP for channel singlewindow to learn about
+2023-05-12 09:52:02.119 UTC 0027 INFO [gateway] configUpdate -> Updating orderer config channel=singlewindow
+2023-05-12 09:52:02.122 UTC 0028 INFO [gossip.state] NewGossipStateProvider -> Updating metadata information for channel singlewindow, current ledger sequence is at = 0, next expected block is = 1
+2023-05-12 09:52:02.123 UTC 0029 INFO [deliveryClient] StartDeliverForChannel -> This peer will retrieve blocks from ordering service and disseminate to other peers in the organization channel=singlewindow
+2023-05-12 09:52:02.123 UTC 002a INFO [endorser] callChaincode -> finished chaincode: cscc duration: 43ms channel= txID=1100adb8
+2023-05-12 09:52:02.123 UTC 002b INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=192.168.96.1:40320 grpc.code=OK grpc.call_duration=46.467792ms
+2023-05-12 09:52:02.132 UTC 002c INFO [peer.blocksprovider] DeliverBlocks -> Pulling next blocks from ordering service channel=singlewindow orderer-address=orderer.example.com:7050 nextBlock=1
+
+
+# Attemps tradingcompany1 to join channel
+fadhil@ip-192-168-1-3 test-network % peer channel join -b channel-artifacts/singlewindow_genesis.block
+2023-05-12 16:56:21.542 WIB 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2023-05-12 16:56:21.576 WIB 0002 INFO [channelCmd] executeJoin -> Successfully submitted proposal to join channel
+
+# Logs on peer0.tradingcompany1.example.com
+2023-05-12 09:56:21.557 UTC 001e INFO [ledgermgmt] CreateLedger -> Creating ledger [singlewindow] with genesis block
+2023-05-12 09:56:21.562 UTC 001f INFO [blkstorage] newBlockfileMgr -> Getting block information from block storage
+2023-05-12 09:56:21.570 UTC 0020 INFO [kvledger] commit -> [singlewindow] Committed block [0] with 1 transaction(s) in 5ms (state_validation=0ms block_and_pvtdata_commit=2ms state_commit=1ms) commitHash=[]
+2023-05-12 09:56:21.570 UTC 0021 INFO [kvledger] updateLedgerStatus -> Updating ledger [singlewindow] status to [ACTIVE]
+2023-05-12 09:56:21.571 UTC 0022 INFO [ledgermgmt] CreateLedger -> Created ledger [singlewindow] with genesis block
+2023-05-12 09:56:21.574 UTC 0023 WARN [peer.orderers] Update -> Config defines both orderer org specific endpoints and global endpoints, global endpoints will be ignored channel=singlewindow
+2023-05-12 09:56:21.575 UTC 0024 INFO [gossip.gossip] JoinChan -> Joining gossip network of channel singlewindow with 2 organizations
+2023-05-12 09:56:21.575 UTC 0025 INFO [gossip.gossip] learnAnchorPeers -> No configured anchor peers of SingleWindowMSP for channel singlewindow to learn about
+2023-05-12 09:56:21.575 UTC 0026 INFO [gossip.gossip] learnAnchorPeers -> No configured anchor peers of TradingCompany1MSP for channel singlewindow to learn about
+2023-05-12 09:56:21.575 UTC 0027 INFO [gateway] configUpdate -> Updating orderer config channel=singlewindow
+2023-05-12 09:56:21.576 UTC 0028 INFO [gossip.state] NewGossipStateProvider -> Updating metadata information for channel singlewindow, current ledger sequence is at = 0, next expected block is = 1
+2023-05-12 09:56:21.576 UTC 0029 INFO [deliveryClient] StartDeliverForChannel -> This peer will retrieve blocks from ordering service and disseminate to other peers in the organization channel=singlewindow
+2023-05-12 09:56:21.576 UTC 002a INFO [endorser] callChaincode -> finished chaincode: cscc duration: 26ms channel= txID=6197b699
+2023-05-12 09:56:21.576 UTC 002b INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=192.168.96.1:43208 grpc.code=OK grpc.call_duration=30.0495ms
+2023-05-12 09:56:21.584 UTC 002c INFO [peer.blocksprovider] DeliverBlocks -> Pulling next blocks from ordering service channel=singlewindow orderer-address=orderer.example.com:7050 nextBlock=1

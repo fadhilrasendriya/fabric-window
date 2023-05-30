@@ -1,0 +1,96 @@
+# Local
+fadhil@ip-192-168-1-3 test-network % peer lifecycle chaincode install channel-artifacts/do_chaincode.tar.gz
+2023-05-14 21:45:37.998 WIB 0001 INFO [cli.lifecycle.chaincode] submitInstallProposal -> Installed remotely: response:<status:200 payload:"\nGdo_1.0:7754d69116406bf851645cb6b5aeeb9b0ac3e81eac6e11bbd4636925a5b4b9e4\022\006do_1.0" >
+2023-05-14 21:45:38.012 WIB 0002 INFO [cli.lifecycle.chaincode] submitInstallProposal -> Chaincode code package identifier: do_1.0:7754d69116406bf851645cb6b5aeeb9b0ac3e81eac6e11bbd4636925a5b4b9e4
+
+# orderer.example.com
+2023-05-14 14:44:56.892 UTC 0038 INFO [comm.grpc.server] 1 -> streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Deliver grpc.peer_address=192.168.96.2:44288 error="context finished before block retrieved: context canceled" grpc.code=Unknown grpc.call_duration=5h32m5.203223368s
+2023-05-14 14:44:56.891 UTC 0039 INFO [comm.grpc.server] 1 -> streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Deliver grpc.peer_address=192.168.96.4:38564 error="context finished before block retrieved: context canceled" grpc.code=Unknown grpc.call_duration=5h34m44.355196898s
+
+# peer0.singlewindow.example.com
+2023-05-14 14:44:59.748 UTC 0003 INFO [peer] getLocalAddress -> Auto-detected peer address: 192.168.96.2:7051
+2023-05-14 14:44:59.748 UTC 0004 INFO [peer] getLocalAddress -> Returning peer0.singlewindow.example.com:7051
+2023-05-14 14:44:59.787 UTC 0005 INFO [nodeCmd] initGrpcSemaphores -> concurrency limit for endorser service is 2500
+2023-05-14 14:44:59.787 UTC 0006 INFO [nodeCmd] initGrpcSemaphores -> concurrency limit for deliver service is 2500
+2023-05-14 14:44:59.787 UTC 0007 INFO [nodeCmd] serve -> Starting peer with TLS enabled
+2023-05-14 14:44:59.814 UTC 0008 INFO [certmonitor] trackCertExpiration -> The enrollment certificate will expire on 2033-05-09 03:06:00 +0000 UTC
+2023-05-14 14:44:59.814 UTC 0009 INFO [certmonitor] trackCertExpiration -> The server TLS certificate will expire on 2033-05-09 03:06:00 +0000 UTC
+2023-05-14 14:44:59.815 UTC 000a INFO [ledgermgmt] NewLedgerMgr -> Initializing LedgerMgr
+2023-05-14 14:44:59.942 UTC 000b INFO [ledgermgmt] NewLedgerMgr -> Initialized LedgerMgr
+2023-05-14 14:44:59.946 UTC 000c INFO [gossip.service] New -> Initialize gossip with endpoint peer0.singlewindow.example.com:7051
+2023-05-14 14:44:59.947 UTC 000d INFO [gossip.gossip] New -> Creating gossip service with self membership of Endpoint: peer0.singlewindow.example.com:7051, InternalEndpoint: peer0.singlewindow.example.com:7051, PKI-ID: 2956812ba4f8ac1ba8be59afac4d36d7373f3e4effcfb22959c4f2075fb1588e, Metadata:
+2023-05-14 14:44:59.948 UTC 000e INFO [gossip.gossip] start -> Gossip instance peer0.singlewindow.example.com:7051 started
+2023-05-14 14:44:59.948 UTC 000f INFO [lifecycle] InitializeLocalChaincodes -> Initialized lifecycle cache with 0 already installed chaincodes
+2023-05-14 14:44:59.948 UTC 0010 INFO [nodeCmd] computeChaincodeEndpoint -> Entering computeChaincodeEndpoint with peerHostname: peer0.singlewindow.example.com
+2023-05-14 14:44:59.949 UTC 0011 INFO [nodeCmd] computeChaincodeEndpoint -> Exit with ccEndpoint: peer0.singlewindow.example.com:7052
+2023-05-14 14:44:59.956 UTC 0012 INFO [sccapi] DeploySysCC -> deploying system chaincode 'lscc'
+2023-05-14 14:44:59.956 UTC 0013 INFO [sccapi] DeploySysCC -> deploying system chaincode 'cscc'
+2023-05-14 14:44:59.956 UTC 0014 INFO [sccapi] DeploySysCC -> deploying system chaincode 'qscc'
+2023-05-14 14:44:59.956 UTC 0015 INFO [sccapi] DeploySysCC -> deploying system chaincode '_lifecycle'
+2023-05-14 14:44:59.956 UTC 0016 INFO [nodeCmd] serve -> Deployed system chaincodes
+2023-05-14 14:44:59.956 UTC 0017 INFO [peer] Initialize -> Loading chain singlewindow
+2023-05-14 14:44:59.956 UTC 0018 INFO [ledgermgmt] OpenLedger -> Opening ledger with id = singlewindow
+2023-05-14 14:44:59.964 UTC 0019 INFO [ledgermgmt] OpenLedger -> Opened ledger with id = singlewindow
+2023-05-14 14:44:59.967 UTC 001a WARN [peer.orderers] Update -> Config defines both orderer org specific endpoints and global endpoints, global endpoints will be ignored channel=singlewindow
+2023-05-14 14:44:59.968 UTC 001b INFO [gossip.gossip] JoinChan -> Joining gossip network of channel singlewindow with 2 organizations
+2023-05-14 14:44:59.968 UTC 001c INFO [gossip.gossip] learnAnchorPeers -> No configured anchor peers of TradingCompany1MSP for channel singlewindow to learn about
+2023-05-14 14:44:59.968 UTC 001d INFO [gossip.gossip] learnAnchorPeers -> Learning about the configured anchor peers of SingleWindowMSP for channel singlewindow: [{peer0.singlewindow.example.com 7051}]
+2023-05-14 14:44:59.968 UTC 001e INFO [gossip.gossip] learnAnchorPeers -> Anchor peer for channel singlewindow with same endpoint, skipping connecting to myself
+2023-05-14 14:44:59.970 UTC 001f INFO [gossip.state] NewGossipStateProvider -> Updating metadata information for channel singlewindow, current ledger sequence is at = 1, next expected block is = 2
+2023-05-14 14:44:59.971 UTC 0020 INFO [deliveryClient] StartDeliverForChannel -> This peer will retrieve blocks from ordering service and disseminate to other peers in the organization channel=singlewindow
+2023-05-14 14:44:59.997 UTC 0021 INFO [peer.blocksprovider] DeliverBlocks -> Pulling next blocks from ordering service channel=singlewindow orderer-address=orderer.example.com:7050 nextBlock=2
+2023-05-14 14:44:59.998 UTC 0022 INFO [discovery] NewService -> Created with config TLS: true, authCacheMaxSize: 1000, authCachePurgeRatio: 0.750000
+2023-05-14 14:44:59.998 UTC 0023 INFO [nodeCmd] serve -> Discovery service activated
+2023-05-14 14:44:59.998 UTC 0024 INFO [nodeCmd] serve -> Starting peer with Gateway enabled
+2023-05-14 14:44:59.999 UTC 0025 INFO [nodeCmd] serve -> Starting peer with ID=[peer0.singlewindow.example.com], network ID=[dev], address=[peer0.singlewindow.example.com:7051]
+2023-05-14 14:45:00.000 UTC 0026 INFO [nodeCmd] serve -> Started peer with ID=[peer0.singlewindow.example.com], network ID=[dev], address=[peer0.singlewindow.example.com:7051]
+2023-05-14 14:45:00.000 UTC 0027 INFO [kvledger] LoadPreResetHeight -> Loading prereset height from path [/var/hyperledger/production/ledgersData/chains]
+2023-05-14 14:45:00.005 UTC 0028 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2023-05-14T14:45:02.005Z grpc.peer_address=192.168.96.4:56624 grpc.peer_subject="CN=peer0.tradingcompany1.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=59.292µs
+2023-05-14 14:45:00.010 UTC 0029 INFO [gossip.comm] GossipStream -> Peer 9a305518c371ffce46dee8de7fb9ca75a923e1bbbc72db806c03b1ae29d8f2f7 (192.168.96.4:56624) probed us
+2023-05-14 14:45:00.010 UTC 002a INFO [comm.grpc.server] 1 -> streaming call completed grpc.service=gossip.Gossip grpc.method=GossipStream grpc.request_deadline=2023-05-14T14:45:10.008Z grpc.peer_address=192.168.96.4:56624 grpc.peer_subject="CN=peer0.tradingcompany1.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=1.461375ms
+2023-05-14 14:45:00.016 UTC 002b INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2023-05-14T14:45:02.016Z grpc.peer_address=192.168.96.4:56632 grpc.peer_subject="CN=peer0.tradingcompany1.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=48.625µs
+2023-05-14 14:45:04.969 UTC 002c INFO [gossip.channel] reportMembershipChanges -> [[singlewindow] Membership view has changed. peers went online:  [[peer0.tradingcompany1.example.com:9051 ]] , current view:  [[peer0.tradingcompany1.example.com:9051 ]]]
+2023-05-14 14:45:13.748 UTC 002d INFO [chaincode.externalbuilder.ccaas_builder] waitForExit -> ::Detect command=detect
+2023-05-14 14:45:13.751 UTC 002e INFO [chaincode.externalbuilder.ccaas_builder] waitForExit -> ::Error: chaincode type not supported: golang command=detect
+2023-05-14 14:45:37.993 UTC 002f INFO [lifecycle] InstallChaincode -> Successfully installed chaincode with package ID 'do_1.0:7754d69116406bf851645cb6b5aeeb9b0ac3e81eac6e11bbd4636925a5b4b9e4'
+2023-05-14 14:45:37.994 UTC 0030 INFO [endorser] callChaincode -> finished chaincode: _lifecycle duration: 24258ms channel= txID=7110992c
+2023-05-14 14:45:37.995 UTC 0031 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=192.168.96.1:46566 grpc.code=OK grpc.call_duration=24.259806303s
+
+# peer0.tradingcompany1.example.com
+2023-05-14 14:44:59.721 UTC 0003 INFO [peer] getLocalAddress -> Auto-detected peer address: 192.168.96.4:9051
+2023-05-14 14:44:59.721 UTC 0004 INFO [peer] getLocalAddress -> Returning peer0.tradingcompany1.example.com:9051
+2023-05-14 14:44:59.774 UTC 0005 INFO [nodeCmd] initGrpcSemaphores -> concurrency limit for endorser service is 2500
+2023-05-14 14:44:59.774 UTC 0006 INFO [nodeCmd] initGrpcSemaphores -> concurrency limit for deliver service is 2500
+2023-05-14 14:44:59.774 UTC 0007 INFO [nodeCmd] serve -> Starting peer with TLS enabled
+2023-05-14 14:44:59.816 UTC 0008 INFO [certmonitor] trackCertExpiration -> The enrollment certificate will expire on 2033-05-09 03:06:00 +0000 UTC
+2023-05-14 14:44:59.816 UTC 0009 INFO [certmonitor] trackCertExpiration -> The server TLS certificate will expire on 2033-05-09 03:06:00 +0000 UTC
+2023-05-14 14:44:59.817 UTC 000a INFO [ledgermgmt] NewLedgerMgr -> Initializing LedgerMgr
+2023-05-14 14:44:59.947 UTC 000b INFO [ledgermgmt] NewLedgerMgr -> Initialized LedgerMgr
+2023-05-14 14:44:59.950 UTC 000c INFO [gossip.service] New -> Initialize gossip with endpoint peer0.tradingcompany1.example.com:9051
+2023-05-14 14:44:59.952 UTC 000d INFO [gossip.gossip] New -> Creating gossip service with self membership of Endpoint: peer0.tradingcompany1.example.com:9051, InternalEndpoint: peer0.tradingcompany1.example.com:9051, PKI-ID: 9a305518c371ffce46dee8de7fb9ca75a923e1bbbc72db806c03b1ae29d8f2f7, Metadata:
+2023-05-14 14:44:59.953 UTC 000e INFO [lifecycle] InitializeLocalChaincodes -> Initialized lifecycle cache with 0 already installed chaincodes
+2023-05-14 14:44:59.953 UTC 000f INFO [gossip.gossip] start -> Gossip instance peer0.tradingcompany1.example.com:9051 started
+2023-05-14 14:44:59.953 UTC 0010 INFO [nodeCmd] computeChaincodeEndpoint -> Entering computeChaincodeEndpoint with peerHostname: peer0.tradingcompany1.example.com
+2023-05-14 14:44:59.953 UTC 0011 INFO [nodeCmd] computeChaincodeEndpoint -> Exit with ccEndpoint: peer0.tradingcompany1.example.com:9052
+2023-05-14 14:44:59.957 UTC 0012 INFO [sccapi] DeploySysCC -> deploying system chaincode 'lscc'
+2023-05-14 14:44:59.958 UTC 0013 INFO [sccapi] DeploySysCC -> deploying system chaincode 'cscc'
+2023-05-14 14:44:59.958 UTC 0014 INFO [sccapi] DeploySysCC -> deploying system chaincode 'qscc'
+2023-05-14 14:44:59.958 UTC 0015 INFO [sccapi] DeploySysCC -> deploying system chaincode '_lifecycle'
+2023-05-14 14:44:59.958 UTC 0016 INFO [nodeCmd] serve -> Deployed system chaincodes
+2023-05-14 14:44:59.958 UTC 0017 INFO [peer] Initialize -> Loading chain singlewindow
+2023-05-14 14:44:59.958 UTC 0018 INFO [ledgermgmt] OpenLedger -> Opening ledger with id = singlewindow
+2023-05-14 14:44:59.968 UTC 0019 INFO [ledgermgmt] OpenLedger -> Opened ledger with id = singlewindow
+2023-05-14 14:44:59.971 UTC 001a WARN [peer.orderers] Update -> Config defines both orderer org specific endpoints and global endpoints, global endpoints will be ignored channel=singlewindow
+2023-05-14 14:44:59.971 UTC 001b INFO [gossip.gossip] JoinChan -> Joining gossip network of channel singlewindow with 2 organizations
+2023-05-14 14:44:59.971 UTC 001c INFO [gossip.gossip] learnAnchorPeers -> Learning about the configured anchor peers of SingleWindowMSP for channel singlewindow: [{peer0.singlewindow.example.com 7051}]
+2023-05-14 14:44:59.971 UTC 001d INFO [gossip.gossip] learnAnchorPeers -> No configured anchor peers of TradingCompany1MSP for channel singlewindow to learn about
+2023-05-14 14:44:59.982 UTC 001e INFO [gossip.state] NewGossipStateProvider -> Updating metadata information for channel singlewindow, current ledger sequence is at = 1, next expected block is = 2
+2023-05-14 14:44:59.982 UTC 001f INFO [deliveryClient] StartDeliverForChannel -> This peer will retrieve blocks from ordering service and disseminate to other peers in the organization channel=singlewindow
+2023-05-14 14:44:59.987 UTC 0020 INFO [discovery] NewService -> Created with config TLS: true, authCacheMaxSize: 1000, authCachePurgeRatio: 0.750000
+2023-05-14 14:44:59.990 UTC 0021 INFO [nodeCmd] serve -> Discovery service activated
+2023-05-14 14:44:59.990 UTC 0022 INFO [nodeCmd] serve -> Starting peer with Gateway enabled
+2023-05-14 14:44:59.990 UTC 0023 INFO [nodeCmd] serve -> Starting peer with ID=[peer0.tradingcompany1.example.com], network ID=[dev], address=[peer0.tradingcompany1.example.com:9051]
+2023-05-14 14:44:59.990 UTC 0024 INFO [nodeCmd] serve -> Started peer with ID=[peer0.tradingcompany1.example.com], network ID=[dev], address=[peer0.tradingcompany1.example.com:9051]
+2023-05-14 14:44:59.990 UTC 0025 INFO [kvledger] LoadPreResetHeight -> Loading prereset height from path [/var/hyperledger/production/ledgersData/chains]
+2023-05-14 14:44:59.999 UTC 0026 INFO [peer.blocksprovider] DeliverBlocks -> Pulling next blocks from ordering service channel=singlewindow orderer-address=orderer.example.com:7050 nextBlock=2
+2023-05-14 14:45:04.972 UTC 0027 INFO [gossip.channel] reportMembershipChanges -> [[singlewindow] Membership view has changed. peers went online:  [[peer0.singlewindow.example.com:7051 ]] , current view:  [[peer0.singlewindow.example.com:7051 ]]]

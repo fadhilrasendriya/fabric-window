@@ -1,0 +1,34 @@
+# simulator
+
+--> Submit Transaction: CreateOrder, Creating an order
+2023/05/26 20:05:10 INFO: creating order with goods that does not comply with rules
+{good-000000 500 kg}
+{good-000001 6 kg}
+{good-000002 2 kg}
+{good-000003 8.5 kg}
+{good-000004 3.25 kg}
+2023/05/26 20:05:10 INFO: Submitting invalid order
+rpc error: code = Aborted desc = failed to endorse transaction, see attached details for more info
+
+*** Transaction not committed
+
+# chaincode
+2023/05/26 13:05:10 CreateOrder -> INFO: creating order id: order-000001, orderType: import, country: US, name: First Order, description: An order description...
+2023/05/26 13:05:10 CreateOrder -> INFO: checking if order already exists...
+2023/05/26 13:05:10 CreateOrder -> INFO: checking order id: order-000001 existence
+2023/05/26 13:05:10 CreateOrder -> INFO: validating requested goods...
+2023/05/26 13:05:10 CreateOrder -> INFO: retreiving good id: good-000000
+2023/05/26 13:05:10 CreateOrder -> INFO: unmarshalling good
+2023/05/26 13:05:10 CreateOrder -> INFO: validating good quantity...
+2023/05/26 13:05:10 CreateOrder -> INFO: validating quantity limit
+2023/05/26 13:05:10 CreateOrder -> ERROR: limit exceeded
+
+# orderer.example.com
+no logs
+# peer0.tradingcompany1.example.com
+2023-05-26 13:05:10.126 UTC ae80 INFO [endorser] callChaincode -> finished chaincode: do_chaincode duration: 2ms channel=singlewindow txID=5cc6d0d0
+2023-05-26 13:05:10.126 UTC ae81 WARN [gateway] func1 -> Endorse call to endorser failed channel=singlewindow chaincode=do_chaincode txID=5cc6d0d02bc7bb871bfb6f112b67a335340d357ad68e2e31b2ffb0558762a3b1 endorserAddress=peer0.tradingcompany1.example.com:9051 endorserMspid=TradingCompany1MSP error="chaincode response 500, export/import limit exceeded"
+2023-05-26 13:05:10.126 UTC ae82 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2023-05-26T13:05:25.12Z grpc.peer_address=192.168.192.1:43058 error="rpc error: code = Aborted desc = failed to endorse transaction, see attached details for more info" grpc.code=Aborted grpc.call_duration=4.438459ms
+
+# peer0.singlewindow.example.com
+no logs
